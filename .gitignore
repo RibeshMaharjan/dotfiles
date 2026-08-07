@@ -1,2 +1,5 @@
 # Tmux plugins
 tmux/.config/tmux/plugins/
+
+# Fish Shell
+fish/.config/fish/fish_variables
