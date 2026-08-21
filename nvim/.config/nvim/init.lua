@@ -11,3 +11,5 @@ vim.opt.smartindent = true
 -- Search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+require("config.lazy")
