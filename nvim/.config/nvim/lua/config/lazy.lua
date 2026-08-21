@@ -24,6 +24,20 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
-  }
+    { import = "plugins" },
+  },
+
+  install = {
+    colorscheme = { "habamax" },
+  },
+
+  checker = {
+    enabled = true,
+  },
+  
+  performance = {
+    rtp = {
+      reset = false,
+    },
+  },
 })
