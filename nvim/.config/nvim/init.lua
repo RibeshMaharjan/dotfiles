@@ -12,4 +12,7 @@ vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+require("keymaps")
+require("options")
 require("config.lazy")
+require("keymap-plugins")
