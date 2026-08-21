@@ -4,3 +4,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+
+-- Mason LSP Bridge
+vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
