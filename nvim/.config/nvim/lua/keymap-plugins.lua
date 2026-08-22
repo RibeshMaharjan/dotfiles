@@ -7,4 +7,9 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" 
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- NeoTree
-vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>', {})
+
+-- Open / focus Neo-tree
+vim.keymap.set("n", "<C-n>", "<Cmd>Neotree filesystem reveal left<CR>")
+
+-- Toggle Neo-tree
+vim.keymap.set("n", "<leader>n", "<Cmd>Neotree toggle<CR>")
