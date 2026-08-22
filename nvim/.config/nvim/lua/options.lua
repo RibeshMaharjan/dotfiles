@@ -15,3 +15,11 @@ vim.opt.smartcase = true
 -- Clipboard settings
 vim.opt.clipboard = "unnamedplus"
 
+-- Diagnostic
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
