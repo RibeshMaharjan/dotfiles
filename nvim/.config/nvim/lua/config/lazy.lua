@@ -28,7 +28,7 @@ require("lazy").setup({
   checker = {
     enabled = true,
   },
-  
+
   performance = {
     rtp = {
       reset = false,
