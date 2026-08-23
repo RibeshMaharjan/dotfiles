@@ -1,11 +1,11 @@
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     -- Lock to the last stable release before the 0.12 rewrite
-    tag = 'v0.9.3',
+    tag = "v0.9.3",
     branch = "master",
     lazy = false,
-    build = ':TSUpdate',
+    build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
         -- Parsers to automatically install
@@ -30,7 +30,7 @@ return {
         auto_install = false,
 
         -- List of parsers to ignore installing (or "all")
-        ignore_install = { "" },
+        -- ignore_install = { "" },
 
         -- Enable Treesitter syntax highlighting
         highlight = {
@@ -44,5 +44,5 @@ return {
         },
       })
     end,
-  }
+  },
 }
