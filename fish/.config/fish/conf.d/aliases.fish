@@ -31,8 +31,8 @@ alias gc='git checkout'
 alias gt='git log --since="midnight" --author="$(git config user.name)" --oneline'
 
 # Docker Postgres
-alias pg12='docker exec -it pg12 psql -U asura'
-alias pg16='docker exec -it pg16 psql -U asura'
+alias pg12='pgcli -h localhost -p 5433 -U asura'
+alias pg16='pgcli -h localhost -p 5432 -U asura'
 
 # Secrets
 alias advo-pass='copy-secret advotect-prod-pass'

@@ -1,6 +1,7 @@
 return {
   -- Catppuccin
-
+  -- {
+  --   "catppuccin/nvim",
   --   name = "catppuccin",
   --   priority = 1000,
   --   opts = {
@@ -10,7 +11,7 @@ return {
   --   config = function()
   --     vim.cmd.colorscheme("catppuccin")
   --   end,
-  -- }
+  -- },
   -- Kanso
   {
     "webhooked/kanso.nvim",
