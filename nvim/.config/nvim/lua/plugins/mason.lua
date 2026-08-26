@@ -64,7 +64,12 @@ return {
           "html",
           "cssls",
           "tailwindcss",
+
+          -- linter
           "eslint",
+
+          -- formatter
+          "stylua",
         },
         automatic_enable = false,
       })
