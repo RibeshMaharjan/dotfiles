@@ -10,7 +10,7 @@ return {
     ---@type blink.cmp.Config
     opts = {
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { preset = "default" },
+      keymap = { preset = "enter" },
 
       appearance = {
         nerd_font_variant = "mono",
