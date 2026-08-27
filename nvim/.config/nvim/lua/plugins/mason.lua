@@ -1,7 +1,6 @@
 return {
   {
     "mason-org/mason-lspconfig.nvim",
-    opts = {},
     dependencies = {
       {
         "mason-org/mason.nvim",
@@ -14,9 +13,6 @@ return {
             },
           },
         },
-        config = function()
-          require("mason").setup()
-        end,
       },
       {
         "neovim/nvim-lspconfig",
@@ -58,23 +54,21 @@ return {
         end,
       },
     },
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "ts_ls",
-          "html",
-          "cssls",
-          "tailwindcss",
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "ts_ls",
+        "html",
+        "cssls",
+        "tailwindcss",
 
-          -- linter
-          "eslint",
+        -- linter
+        "eslint",
 
-          -- formatter
-          "stylua",
-        },
-        automatic_enable = false,
-      })
-    end,
+        -- formatter
+        "stylua",
+      },
+      automatic_enable = false,
+    },
   },
 }

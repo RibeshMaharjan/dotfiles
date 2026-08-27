@@ -17,10 +17,12 @@ return {
     "webhooked/kanso.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("kanso").setup({
-        transparent = true,
-      })
+    opts = {
+      transparent = true,
+    },
+    config = function(_, opts)
+      local kanso = require("kanso")
+      kanso.setup(opts)
 
       vim.cmd.colorscheme("kanso-zen")
     end,
