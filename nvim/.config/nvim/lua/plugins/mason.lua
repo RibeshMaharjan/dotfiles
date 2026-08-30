@@ -61,6 +61,8 @@ return {
         "html",
         "cssls",
         "tailwindcss",
+        "jsonls",
+        "emmet_language_server",
 
         -- linter
         "eslint",
