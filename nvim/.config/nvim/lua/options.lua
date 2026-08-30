@@ -2,10 +2,15 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Cursor
+vim.opt.guicursor = ""
+
 -- Tabs and indentation
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- Search settings
@@ -23,3 +28,8 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
+
+-- ackup
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undofile = true

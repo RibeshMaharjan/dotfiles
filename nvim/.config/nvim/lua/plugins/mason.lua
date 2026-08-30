@@ -30,10 +30,26 @@ return {
           },
         },
         config = function()
+          local set = vim.keymap.set
           vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("my.lsp", {}),
             callback = function(args)
               local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+              set("n", "gd", vim.lsp.buf.definition, {
+                buffer = args.buf,
+                desc = "Go to definition",
+              })
+              set("n", "gD", vim.lsp.buf.declaration, {
+                buffer = args.buf,
+                desc = "Go to declaration",
+              })
+              set("n", "<leader>th", function()
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(filter), filter)
+              end, {
+                buffer = args.buf,
+                desc = "Toggle inlay hints",
+              })
 
               -- Auto-format ("lint") on save.
               -- Usually not needed if server supports "textDocument/willSaveWaitUntil".

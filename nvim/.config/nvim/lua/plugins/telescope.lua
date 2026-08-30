@@ -50,6 +50,10 @@ return {
 
       set("n", "<leader>cs", builtin.lsp_document_symbols, { desc = "Document Symbols" })
 
+      -- Git binds
+      set("n", "<leader>gc", builtin.git_commits, { desc = "List git commits" })
+      set("n", "<leader>gB", builtin.git_branches, { desc = "List git branches" })
+
       -- Extensions
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")

@@ -22,20 +22,72 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      local gitsigns = require("gitsigns")
-      local set = vim.keymap.set
-      gitsigns.setup()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local bufnr = args.buf
+          local gs = require("gitsigns")
 
-      set("n", "]c", function()
-        gitsigns.nav_hunk("next")
-      end, { desc = "Move to next hunk" })
+          gs.setup({
+            diff_opts = {
+              -- This ensures both sides stay synced when scrolling,
+              -- but you can customize the window options below
+              vertical = true,
+            },
+          })
 
-      set("n", "[c", function()
-        gitsigns.nav_hunk("prev")
-      end, { desc = "Move to previous hunk" })
+          local function set(mode, lhs, rhs, desc)
+            vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+          end
 
-      set("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview hunk" })
-      set("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline" })
+          -- Keybinds
+          set("n", "]c", function()
+            if vim.wo.diff then
+              vim.cmd.normal({ "]c", bang = true })
+            else
+              gs.nav_hunk("next")
+            end
+          end, "Next change")
+
+          set("n", "[c", function()
+            if vim.wo.diff then
+              vim.cmd.normal({ "[c", bang = true })
+            else
+              gs.nav_hunk("prev")
+            end
+          end, "Previous change")
+
+          set("n", "<leader>hp", gs.preview_hunk, "Preview change")
+          set("n", "<leader>hi", gs.preview_hunk_inline, "Preview change inline")
+
+          set("n", "<leader>ghi", function()
+            vim.cmd("Gitsigns toggle_linehl")
+            -- vim.cmd("Gitsigns toggle_word_diff")
+            vim.cmd("Gitsigns toggle_deleted")
+            vim.cmd("Gitsigns toggle_numhl")
+          end, "Toggle All Git Changes in Buffer")
+
+          set("n", "<leader>hs", gs.stage_hunk, "Stage change")
+          set("n", "<leader>hr", gs.reset_hunk, "Reject change")
+          set("n", "<leader>hd", gs.diffthis, "Diff unstaged changes")
+          set("n", "<leader>hD", function()
+            gs.diffthis("HEAD")
+          end, "Diff all uncommitted changes")
+          set("n", "<leader>hq", function()
+            gs.setqflist("all")
+          end, "Review all changes")
+
+          set("n", "<leader>gb", gs.blame, "Show git blame")
+          set("n", "<leader>gbi", gs.toggle_current_line_blame, "Toggle git blame inline")
+
+          -- Diff against index (default)
+          set("n", "<leader>gd", gs.diffthis, "Diff against index")
+
+          -- Diff against the last commit (HEAD)
+          set("n", "<leader>gD", function()
+            gs.diffthis("~")
+          end, "Show diff against the last commit")
+        end,
+      })
     end,
   },
 }
